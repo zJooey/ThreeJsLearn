@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10f3cdf7-4c9d-490d-a148-8e5dd8322cfa" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UEqOZTapvPcF3VuSTmsCP0SA9s" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lingling" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Sass" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\e_downlaoad\hxlc_webStorm\ThreeJsLearn\plugins\tween" />
+      <recent name="D:\e_downlaoad\hxlc_webStorm\ThreeJsLearn\plugins\stats" />
+      <recent name="D:\e_downlaoad\hxlc_webStorm\ThreeJsLearn\plugins\threeJs" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10f3cdf7-4c9d-490d-a148-8e5dd8322cfa" name="Default Changelist" comment="" />
+      <created>1574932072993</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574932072993</updated>
+      <workItem from="1574932082811" duration="4991000" />
+      <workItem from="1574990214766" duration="4862000" />
+      <workItem from="1575031610516" duration="4280000" />
+      <workItem from="1575076252720" duration="433000" />
+      <workItem from="1575422102962" duration="5214000" />
+      <workItem from="1575958558145" duration="4473000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

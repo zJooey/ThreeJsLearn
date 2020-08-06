@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>南京</title>
+    <script src="../../plugins/jquery/jquery-3.4.1.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * 请求URL：
+     https://api.yespowering.cn/login/
+     请求⽅式：
+     POST
+     请求头：
+     参数名      必选      类型              说明
+     agent      是       string      客⼾端0， 服务端 1
+     language   是       string      zh/en
+     brandid    是       string      ⼚商编号 默认 00
+     参数：
+     参数名     必选       类型        说明
+     account    是       string      账号
+     pw         是       string      密码
+     ----------------------------------------------------
+     返回参数说明
+     参数名      类型      说明
+     code       int     0成功,1登录失败
+     token      string  接⼝请求令牌（时效2⼩时）
+     */
+    function login(form) {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://api.yespowering.cn/login/",
+            "method": "POST",
+            "headers": {
+                "sign": "532146B9A862CF7C148C34F0F183A097",
+                "timestamp": "a",
+                "agent": "0",
+                "brandid": "38",
+                "language": "zh",
+                "userid": "213d2293df0d11e6afdc70106fada486",
+                "content-type": "application/x-www-form-urlencoded"
+            },
+            "data": {
+                "account": form.username,
+                "pw": form.password
+            }
+        }
+        $.ajax(settings).done(function (response) {
+            // {"msg":"success","data":{"userinfo":{"token":"25DEFC15CFC5EEBA7B67C00CF1328238"}},"code":0}
+            console.log(response);
+        })
+    }
+    /*
+    *   AppId：203df435640d6d26a238a70d0f09a4f6c072a18b
+        AppSecret：f169a8aa3a68e284fdd0da07ec237a78d675795f
+    * */
+    var form = {username: '203df435640d6d26a238a70d0f09a4f6c072a18b', password: 'f169a8aa3a68e284fdd0da07ec237a78d675795f'}
+    // var form = {username: 'zgdd_wu', password: '9876543210'}
+    // var form = {username: '18673077286', password: '88888888'}
+    login(form)
+
+    var token = "201E94E3D0680F3EB6E9E66582E8A482"
+
+    // getData("35E8AZ8607", token)
+    /**
+     * ⼆ 实时数据接⼝
+     请求URL：
+     https://api.yespowering.cn/dev/data/
+     请求⽅式：
+     GET 请求头：
+     参数名    必选        类型          说明
+     agent      是       string      客⼾端0， 服务端 1
+     language   是       string      zh/en
+     brandid    是       string      ⼚商编号 默认 00
+     token      是       string      令牌
+     参数：
+     参数名    必选        类型          说明
+     box_id     是       string      云盒编码
+     -----------------------------------------------
+     返回参数说明
+     参数名     类 型     说明
+     code       int     0成功； 401令牌过期，需要重新调⽤登录接⼝获取最新的token; 404未取得 数据
+     data       dict    字典
+     */
+    function getData(box_id, token) {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://api.yespowering.cn/dev/data/realtime/?box_id=" + box_id,
+            "method": "GET",
+            "headers": {
+                "sign": "532146B9A862CF7C148C34F0F183A097",
+                "timestamp": "a",
+                "agent": "0",
+                "brandid": "38",
+                "language": "zh",
+                "token": token
+            }
+        }
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
+</script>
+</body>
+</html>

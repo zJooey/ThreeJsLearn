@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>isPointInPath</title>
+</head>
+
+<body>
+  <canvas id="ctx"></canvas>
+  <script>
+    var context = document.getElementById("ctx");
+    var ctx = context.getContext("2d");
+    var balls = [];
+
+    window.onload = function () {
+      context.width = 600;
+      context.height = 600;
+      context.style.border = "1px solid red";
+      for (var i = 0; i < 10; i++) {
+        var aball = {
+          x: Math.random() * context.width,
+          y: Math.random() * context.height,
+          w: Math.random() * 50 + 20,
+          h: Math.random() * 50 + 20
+        };
+        balls[i] = aball;
+      }
+      draw();
+      context.addEventListener("mousemove", detect);
+    }
+
+    function draw() {
+      console.log(balls)
+      for (var i = 0; i < balls.length; i++) {
+        ctx.beginPath();
+        ctx.fillStyle = "#f00";
+        ctx.fillRect(balls[i].x, balls[i].y, balls[i].w, balls[i].h);
+      }
+    }
+
+    function detect(e) {
+      var x = e.clientX - context.getBoundingClientRect().left;
+      var y = e.clientY - context.getBoundingClientRect().top;
+      for (var i = 0; i < balls.length; i++) {
+        ctx.beginPath();
+        ctx.rect(balls[i].x, balls[i].y, balls[i].w, balls[i].h);
+        if (ctx.isPointInPath(x, y)) {
+          ctx.fillStyle = "#f0f";
+          ctx.fill();
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

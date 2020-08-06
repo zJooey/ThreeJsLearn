@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Three框架</title>
+    <script src="../plugins/threeJs/three.js"></script>
+    <script src="../plugins/tween/tween.umd.js"></script>
+    <script src="../plugins/stats/stats.js"></script>
+    <style type="text/css">
+      div#canvas-frame {
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        height: 600px;
+        background-color: #eeeeee;
+      }
+    </style>
+    <script>
+      var renderer;
+      var stats, tween;
+      function initThree() {
+        width = document.getElementById("canvas-frame").clientWidth;
+        height = document.getElementById("canvas-frame").clientHeight;
+        renderer = new THREE.WebGLRenderer({
+          antialias: true
+        });
+        renderer.setSize(width, height);
+        document
+          .getElementById("canvas-frame")
+          .appendChild(renderer.domElement);
+        renderer.setClearColor(0xffffff, 1.0);
+
+        // FPS
+        stats = new Stats();
+        // 0: fps, 1: ms
+        stats.setMode(1);
+        // 将stats的界面对应左上角
+        stats.domElement.style.position = "absolute";
+        stats.domElement.style.left = "10px";
+        stats.domElement.style.top = "10px";
+        document.getElementById("canvas-frame").appendChild(stats.domElement);
+        setInterval(function() {
+          stats.begin();
+          // 你的每一帧的代码
+          stats.end();
+        }, 1000 / 60);
+
+        // 动画效果
+        initTween();
+      }
+
+      function initTween() {
+        tween = new TWEEN.Tween(mesh.position)
+          .to({ x: -400 }, 3000)
+          .repeat(Infinity)
+          .start();
+      }
+
+      var camera;
+
+      function initCamera() {
+        camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+        camera.position.x = 0;
+        camera.position.y = 0;
+        camera.position.z = 600;
+        camera.up.x = 0;
+        camera.up.y = 1;
+        camera.up.z = 0;
+        camera.lookAt(0, 0, 0);
+      }
+
+      var scene;
+
+      function initScene() {
+        scene = new THREE.Scene();
+      }
+
+      var light;
+
+      function initLight() {
+        light = new THREE.AmbientLight(0xffffff);
+        light.position.set(100, 100, 200);
+        scene.add(light);
+        light = new THREE.PointLight(0x00ff00);
+        light.position.set(0, 0, 300);
+        scene.add(light);
+      }
+
+      var cube;
+
+      var mesh;
+      function initObject() {
+        var geometry = new THREE.CylinderGeometry(100, 150, 400);
+        var material = new THREE.MeshLambertMaterial({ color: 0xffff00 });
+        mesh = new THREE.Mesh(geometry, material);
+        mesh.position = new THREE.Vector3(0, 0, 0);
+      }
+
+      function threeStart() {
+        initObject();
+        initThree();
+        initCamera();
+        initScene();
+        scene.add(mesh);
+        initLight();
+        animation();
+      }
+
+      function animation() {
+        //renderer.clear();
+
+        // 相机位置移动
+        // camera.position.x = camera.position.x + 1;
+
+        // 物体移动
+        mesh.position.x += 1;
+        renderer.render(scene, camera);
+        requestAnimationFrame(animation);
+
+        stats.update();
+        tween.update();
+      }
+    </script>
+  </head>
+
+  <body onload="threeStart();">
+    <div id="canvas-frame"></div>
+  </body>
+</html>
